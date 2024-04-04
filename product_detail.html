@@ -3,9 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>[5월연휴 출발확정✈️] 네팔 마르디히말 트레킹 8박10일🇳🇵🏔️</title>
+    <link rel="stylesheet" href="product_detail.css">
 </head>
+
 <body>
+    <div class="productDetailPage">
+        <div class="headSection">
+            <!-- 슬라이드 배너 -->
+            <section class="bannerContainer">
+                <div class="left arrow">&lt;</div>
+                <div class="mainBanner">
+                    <div>
+                        <img src="imgs/img01.png">
+                    </div>
+                    <div>
+                        <img src="imgs/img02.png">
+                    </div>
+                </div>
+                <div class="right arrow">&gt;</div>
+                <div class="presentBannerPage">
+                    <span></span>
+                </div>
+            </section>
+            <section class="infoContainer">
+                <!-- 상품 기본 정보 -->
+                <div class="basic-info">
+                    <div class="product-info">
+                        <div class="product-title"><h3>[5월연휴 출발확정✈️] 네팔 마르디히말 트레킹 8박10일🇳🇵🏔️</h3></div>
+                        <img class="share-button" src="imgs/share.png">
+                    </div>
+                    <!-- 가격 -->
+                    <div class="price-info">
+                        <div>45%</div>
+                        <div>1,990,000원</div>
+                        <div>3,590,000원</div>
+                    </div>
+                </div>
+                <!-- 프립케어 -->
+                <div class="frip-care">
+                    <div>
+                        <img src="imgs/fripcare.png">
+                    </div>
+                    <div>
+                        <div>프립케어 무료 지원</div>
+                        <div>프립 참여 시 프립케어를 1년간 무료 지원해 드려요.</div>
+                    </div>
+                    <div>
+                        <img src="imgs/info.png">
+                    </div>
+                </div>
+                <!-- 호스트 정보 -->
+                <div class="host-profile">
+                    <div>
+                        <img src="imgs/host logo.png">
+                    </div>
+                    <div>
+                        <div>
+                            <div>원피크 > </div>
+                            <div>
+                                <img src="imgs/superhost.png">
+                            </div>
+                        </div>
+                        <div>
+                            프립2 | 후기32 | 찜99
+                        </div>
+                    </div>
+                    <div>
+                        <img src="imgs/like.png">
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+        <!-- 리뷰이벤트 이미지 -->
+        <div class="reviewEvent">
+            <div>
+                <img src="imgs/review event.png">
+            </div>
+        </div>
+    </div>
     
 </body>
+<script>
+    const mainBanner = document.querySelector("div.mainBanner");
+    const firstBanner = document.createElement("div");
+    const lastBanner = document.createElement("div");
+    const arrows = document.querySelectorAll("div.arrow");
+    const bannerPageSpan = document.querySelector(".presentBannerPage span");
+
+    let cnt = 0;    // 몇 번째 배너인지를 담을 변수
+    bannerPageSpan.textContent = `${cnt + 1} / 2`;  // 배너 이미지 순서 표시
+
+    // 배너
+    // 배너의 끝에 1번 이미지 추가하기
+    lastBanner.innerHTML = `<img src="imgs/img01.png">`;
+    mainBanner.appendChild(lastBanner);
+    // 배너의 맨 앞에 2번 이미지 추가하기
+    firstBanner.innerHTML = `<img src="imgs/img02.png">`;
+    mainBanner.insertBefore(firstBanner, document.querySelector("div.mainBanner div"));
+    // 맨 처음에 출력되는 이미지를 1번 이미지로 하기 위함
+    mainBanner.style.transform = `translate(-375px)`;   
+
+    // 배너 화살표 클릭 시에만 슬라이드 이동
+    let arrowButtonCheck = true;
+
+    arrows.forEach((arrow) => {
+        arrow.addEventListener("click", (e) => {
+            if(arrowButtonCheck) {      //arrowButtonCheck가 false인 동안은 새로운 이벤트 발생x
+                arrowButtonCheck = false;
+
+                let arrowType = arrow.classList[1];     //이전버튼인지, 다음버튼인지
+                if(arrowType === "left") {      //이전버튼
+                    cnt--;
+                    mainBanner.style.transition = `transform 0.5s`;
+                    mainBanner.style.transform = `translate(${-375 * (cnt + 1)}px)`;
+
+                    if(cnt === -1) {    //맨 처음 슬라이드일 때
+                        setTimeout(() => {
+                            mainBanner.style.transition = `transform 0s`;
+                            mainBanner.style.transform = `translate(-750px)`;
+                        }, 500)
+                        cnt = 1;
+                    }
+                } else {    //다음버튼
+                    cnt++;  
+                    mainBanner.style.transition = `transform 0.5s`;
+                    mainBanner.style.transform = `translate(${-375 * cnt}px)`;
+
+                    if(cnt === 2) {     //마지막 슬라이드일 때
+                        setTimeout(() => {
+                            mainBanner.style.transition = `transform 0s`;
+                            mainBanner.style.transform = `translate(0px)`;
+                        }, 500)
+                        cnt = 0;
+                    }
+                }
+                
+                // 배너 이미지 순서 표시
+                bannerPageSpan.textContent = `${cnt + 1} / 2`;
+
+                setTimeout(() => {
+                    arrowButtonCheck = true;
+                }, 500);
+            }
+
+        })//end 이벤트리스너
+    })
+    
+</script>
 </html>

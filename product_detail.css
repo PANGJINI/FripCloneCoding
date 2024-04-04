@@ -1,0 +1,101 @@
+/* 상품 상세 페이지 전체 */
+div.productDetailPage {
+    width: 850px;
+    padding: 30px;
+}
+
+/* 배너 */
+section.bannerContainer {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 375px;
+    height: 375px;
+    overflow: hidden;
+}
+div.mainBanner {
+    display: flex;
+    width: 1500px;
+}
+/* 배너 사이즈에 맞도록 이미지 크기 조절 */
+div.mainBanner img {
+    max-width: 100%;
+    height: auto;
+}
+/* 배너 화살표 */
+div.arrow {
+    position: absolute;
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: aliceblue;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+div.left {
+    left: 20px;
+}
+div.right {
+    right: 20px;
+}
+/* 배너 순서 표시 */
+div.presentBannerPage {
+    position: absolute;
+    margin: auto;
+    bottom: 10px;
+    background-color: rgb(83, 78, 78);
+    border-radius: 40px;
+    padding: 3px 10px;
+    opacity: 0.7;
+    left: 50%;
+    transform: translate(-50%, -10%);
+}
+div.presentBannerPage span {
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+/* 상품 기본정보 */
+section.infoContainer {
+    display: inline-block; /* 인라인 블록 요소로 설정하여 한 줄에 나란히 배치 */
+    vertical-align: top;
+    margin: 0 auto;
+    width: 375px;
+    height: 375px;
+}
+/* 상품 제목, 공유버튼 이미지 */
+.product-info {
+    display: flex;
+    align-items: center;
+}
+.product-info img {
+    width: 24px;
+    height: 24px;
+}
+/* 상품 가격 정보 */
+.price-info {
+    display: flex;
+    align-items: center;
+}
+/* 프립케어 */
+.frip-care {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgb(229, 229, 229);
+}
+/* 호스트 정보 */
+.host-profile {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+/* 리뷰이벤트 이미지 */
+div.reviewEvent img {
+    max-width: 100%;
+    height: auto;
+}
