@@ -1,14 +1,22 @@
+/* 💥폰트 다운받은 후 적용하기 */
+* {
+    
+}
+
 /* 상품 상세 페이지 전체 */
-div.productDetailPage {
+.productDetailPage {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     width: 850px;
-    padding: 30px;
+    padding: 70px;
 }
 
 /* 배너 */
 section.bannerContainer {
     display: inline-block;
     position: relative;
-    margin: 0 auto;
+    margin: 0px 30px;
     border-radius: 5px;
     width: 375px;
     height: 375px;
@@ -16,7 +24,8 @@ section.bannerContainer {
 }
 div.mainBanner {
     display: flex;
-    width: 1500px;
+    /* width: 1500px; */
+    width: 1125px;
 }
 /* 배너 사이즈에 맞도록 이미지 크기 조절 */
 div.mainBanner img {
@@ -39,10 +48,10 @@ div.left {
 div.right {
     right: 20px;
 }
-/* 배너 순서 표시 */
+/* 배너 이미지 순서 표시 */
 div.presentBannerPage {
     position: absolute;
-    margin: auto;
+    margin: 0 auto;
     bottom: 10px;
     background-color: rgb(83, 78, 78);
     border-radius: 40px;
@@ -91,11 +100,79 @@ section.infoContainer {
     align-items: center;
 }
 
-
-
+/* 섹션 상단에 구분선 표시하기 */
+section.fripPlace,
+section.fripIntroduce,
+section.fripInfo,
+.reviewEvent {
+    border-width: 1px;
+    border-style: solid none none none;
+    border-color: rgb(229, 229, 229);;
+}
+/* 섹션 패딩 설정 */
+.fripPlace,
+.fripIntroduce,
+.fripInfo {
+    padding: 20px 0px 40px;
+}
 
 /* 리뷰이벤트 이미지 */
 div.reviewEvent img {
     max-width: 100%;
     height: auto;
+}
+
+/* 프립 정보 데이터 */
+.fripInfoData {
+    display: flex;
+    align-items: center;
+}
+dt {
+    width: 76px;
+    color: #999999;
+}
+
+/* 프립 소개 내용 */
+.contentBody {
+    height: 860px;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.contentBody img {
+    max-width: 100%;
+    height: auto;
+}
+/* 더보기 버튼 */
+.moreButton button {
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    cursor: pointer;
+}
+.moreButton {
+    display: flex;
+    align-items: center;
+    width: 327px;
+    height: 56px;
+    padding: 1px 6px;
+    border: 2px solid rgb(17, 17, 17);
+    background-color: white;
+    cursor: pointer;
+    justify-content: center;
+
+    position: absolute;
+    /* bottom: 200px; */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 모이는 장소 */
+.fripPlace {
+    margin-top: 30px;
+}
+.placeInfo {
+    font-size: 13px;
+    color: #999999;
+    line-height: 50%;
 }

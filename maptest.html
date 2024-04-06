@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+  <head>
+    <title>Add Map</title>
+
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map" style="width: 50%; height: 400px;"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-tny0rLsczsvAxOq94IpfFgslWjZSVE8&callback=initMap&region=kr"></script>
+
+</body>
+  <script>
+    // Initialize and add the map
+    let map = document.getElementById("map");
+
+    async function initMap() {
+        const position = { lat: 28.505348532190954, lng: 83.94747550727986 };    //지도 좌표
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+        map = new Map(document.getElementById("map"), {     //지도 생성
+            zoom: 15,
+            center: position,
+            mapId: "DEMO_MAP_ID",
+        });
+
+        new google.maps.Marker({
+            position: position,
+            map,
+            title: "Hello World!",
+        });
+    }
+
+    initMap();
+  </script>
+</html>
