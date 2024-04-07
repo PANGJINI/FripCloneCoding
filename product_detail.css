@@ -24,8 +24,8 @@ section.bannerContainer {
 }
 div.mainBanner {
     display: flex;
-    /* width: 1500px; */
-    width: 1125px;
+    width: 1500px;
+    /* width: 1125px; */
 }
 /* 배너 사이즈에 맞도록 이미지 크기 조절 */
 div.mainBanner img {
@@ -101,6 +101,9 @@ section.infoContainer {
 }
 
 /* 섹션 상단에 구분선 표시하기 */
+section.fripRecommend,
+section.fripQuestion,
+section.fripSupplies,
 section.fripPlace,
 section.fripIntroduce,
 section.fripInfo,
@@ -110,6 +113,9 @@ section.fripInfo,
     border-color: rgb(229, 229, 229);;
 }
 /* 섹션 패딩 설정 */
+.fripRecommend,
+.fripQuestion,
+.fripSupplies,
 .fripPlace,
 .fripIntroduce,
 .fripInfo {

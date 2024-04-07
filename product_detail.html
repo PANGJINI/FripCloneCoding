@@ -12,7 +12,6 @@
         <div class="headSection">
             <!-- 슬라이드 배너 -->
             <section class="bannerContainer">
-                <div class="left arrow">&lt;</div>
                 <div class="mainBanner">
                     <div>
                         <img src="imgs/img01.png">
@@ -21,6 +20,7 @@
                         <img src="imgs/img02.png">
                     </div>
                 </div>
+                <div class="left arrow">&lt;</div>
                 <div class="right arrow">&gt;</div>
                 <div class="presentBannerPage">
                     <span></span>
@@ -197,11 +197,11 @@ ABC(4,130m)보다 더 높지만, 쉬운 코스
                     </div>
                     <div>
                         <div>
-                            <p>인천국제공항</p>
-                            <p>인천 중구 공항로 272</p>
+                            <p class="mapTitle">인천국제공항</p>
+                            <p class="mapDetail">인천 중구 공항로 272</p>
                         </div>
                         <div>
-                            <p>편의정보</p>
+                            <p class="mapTitle">편의정보</p>
                             <span>주차 가능</span>
                         </div>
                     </div>
@@ -218,9 +218,81 @@ ABC(4,130m)보다 더 높지만, 쉬운 코스
                     </div>
                     <div>
                         <div>
-                            <p>마르디히말</p>
-                            <p>GW3W+PR Machhapuchchhre</p>
+                            <p class="mapTitle">마르디히말</p>
+                            <p class="mapDetail">GW3W+PR Machhapuchchhre</p>
                         </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!-- 포함사항, 준비물 -->
+        <section class="fripSupplies">
+            <article>
+                <div>
+                    <div class="atricleTitle">포함 사항</div>
+                    <div>
+                        <span>프립 상세 페이지 확인</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="atricleTitle">불포함 사항</div>
+                    <div>
+                        <span>프립 상세 페이지 확인</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="atricleTitle">준비물</div>
+                    <div>
+                        <span>프립 상세 페이지 확인</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!-- 1:1문의, 유의사항, 환불정책 -->
+        <section class="fripQuestion">
+            <div>
+                <div>1:1 문의</div>
+                <img src="imgs/download.png">
+            </div>
+            <div id="caution">
+                <div>유의 사항</div>
+                <img src="imgs/download.png">
+            </div>
+            <div id="cautionDetail">
+                [신청 시 유의사항]<br>
+                · 구매시 호스트 연락처를 카톡 혹은 문자로 보내드립니다.<br>
+                · 호스트 연락처로 진행 가능한 날짜 예약 바랍니다.<br>
+                · 예약 확정 시 환불이 불가합니다.<br>
+                · 예약 시간에 맞추어 늦지 않게 도착해주시기 바랍니다.<br>
+            </div>
+            <div id="refund">
+                <div>환불 정책</div>
+                <img src="imgs/download.png">
+            </div>
+            <div id="refundDetail">
+                1. 결제 후 14일 이내 취소 시 : 전액 환불<br>
+                (단, 결제 후 14일 이내라도 호스트와 프립 진행일 예약 확정 후 환불 불가)<br>
+                2. 결제 후 14일 이후 취소 시 : 환불 불가<br>
+                ※ 상품의 유효기간 만료 시 연장은 불가하며, 기간 내 호스트와 예약 확정 되지 않은 프립은 프립 에너지로 환불 됩니다.<br>
+                ※ 환불된 에너지의 유효기간은 지급일로부터 180일이며, 유효기간 종료 후 기간연장 및 환불이 불가합니다.<br>
+                ※ 배송상품의 경우 배송 준비 전 전액 환불 가능, 배송 준비 후 환불 불가 합니다.<br>
+                ※ 다회권의 경우, 1회라도 사용시 부분 환불이 불가하며, 기간 내 호스트와 예약 확정 되지 않은 프립은 프립 에너지로 환불 됩니다.<br>
+                [환불 신청 방법]<br>
+                1. 해당 프립 결제한 계정으로 로그인<br>
+                2. 마이프립 - 신청내역 or 결제내역<br>
+            </div>
+        </section>
+        <!-- 프립 추천 -->
+        <section class="fripRecommend">
+            <article>
+                <div class="articleTitle">
+                    <h3>이런 프립 어때요?</h3>
+                </div>
+                <div>
+                    <div class="cardContainer">
+                        <img>
+                        <div>부천/인천</div>
+                        <div>[8월 출발확정✈️] 일본 최고봉 후지산 정상등정</div>
                     </div>
                 </div>
             </article>
@@ -229,132 +301,7 @@ ABC(4,130m)보다 더 높지만, 쉬운 코스
     </div>
     
 </body>
-
 <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=gr32rhahel"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-tny0rLsczsvAxOq94IpfFgslWjZSVE8&callback=initMap&region=kr"></script>
-<script>
-    // 배너 관련
-    const mainBanner = document.querySelector("div.mainBanner");
-    const firstBanner = document.createElement("div");
-    const lastBanner = document.createElement("div");
-    const arrows = document.querySelectorAll("div.arrow");
-    const bannerPageSpan = document.querySelector(".presentBannerPage span");
-    // 더보기 버튼 관련
-    const moreButton = document.querySelector(".moreButton");
-    const moreButtonStr = document.querySelector(".moreButton span");
-    const contentBody = document.querySelector(".contentBody");
-    
-
-    let cnt = 0;    // 몇 번째 배너인지를 담을 변수
-    bannerPageSpan.textContent = `${cnt + 1} / 2`;  // 배너 이미지 순서 표시
-
-    // 배너
-    // 배너의 끝에 1번 이미지 추가하기
-    lastBanner.innerHTML = `<img src="imgs/img01.png">`;
-    mainBanner.appendChild(lastBanner);
-    // 배너의 맨 앞에 2번 이미지 추가하기
-    // firstBanner.innerHTML = `<img src="imgs/img02.png">`;
-    // mainBanner.insertBefore(firstBanner, document.querySelector("div.mainBanner div"));
-    // 맨 처음에 출력되는 이미지를 1번 이미지로 하기 위함
-    // mainBanner.style.transform = `translate(-375px)`;   
-
-    // 배너 화살표 클릭 이벤트
-    let arrowButtonCheck = true;
-
-    arrows.forEach((arrow) => {
-        arrow.addEventListener("click", (e) => {
-            if(arrowButtonCheck) {      //arrowButtonCheck가 false인 동안은 새로운 이벤트 발생x
-                arrowButtonCheck = false;
-
-                let arrowType = arrow.classList[1];     //이전버튼인지, 다음버튼인지
-                if(arrowType === "left") {      //이전버튼
-                    // cnt--;
-                    // mainBanner.style.transition = `transform 0.5s`;
-                    // mainBanner.style.transform = `translate(${-375 * (cnt + 1)}px)`;
-
-                    // if(cnt === -1) {    //맨 처음 슬라이드일 때
-                    //     setTimeout(() => {
-                    //         mainBanner.style.transition = `transform 0s`;
-                    //         mainBanner.style.transform = `translate(-750px)`;
-                    //     }, 500)
-                    //     cnt = 1;
-                    // }
-                } else {    //다음버튼
-                    cnt++;  
-                    mainBanner.style.transition = `transform 0.5s`;
-                    mainBanner.style.transform = `translate(${-375 * cnt}px)`;
-
-                    if(cnt === 2) {     //마지막 슬라이드일 때
-                        setTimeout(() => {
-                            mainBanner.style.transition = `transform 0s`;
-                            mainBanner.style.transform = `translate(0px)`;
-                        }, 500)
-                        cnt = 0;
-                    }
-                }
-                
-                // 배너 이미지 순서 표시
-                bannerPageSpan.textContent = `${cnt + 1} / 2`;
-
-                setTimeout(() => {
-                    arrowButtonCheck = true;
-                }, 500);
-            }
-
-        })//end 이벤트리스너
-    });
-
-
-    let isOpen = false;     // 상세보기 펼침 여부 변수
-
-    // 더보기 버튼 이벤트
-    moreButton.addEventListener("click", (e) => {
-        if(!isOpen) {   // 상세보기 접힘 상태일 때
-            contentBody.style.height = '23850px';
-            moreButtonStr.textContent = '간략히';
-        } else {        // 상세보기 열림 상태일 때
-            contentBody.style.height = '940px'
-            moreButtonStr.textContent = '상세정보 더보기';
-        }
-        isOpen = !isOpen;
-    });
-
-
-    // 모이는 장소 지도 (네이버 지도 API)
-    let mapNaver = new naver.maps.Map('mapNaver', {     // 네이버 지도 생성
-        center: new naver.maps.LatLng(37.479510, 126.440910),
-        zoom: 20
-    });
-
-    var marker = new naver.maps.Marker({        // 마커 생성
-            position: new naver.maps.LatLng(37.479510, 126.440910),
-            map: mapNaver
-    });
-
-
-    // 진행하는 장소 지도 (구글맵 API)
-    let map = document.getElementById("mapGoogle");
-
-    async function initMap() {
-        //28.505348532190954, 83.94747550727986
-        const position = { lat: 28.5043, lng: 83.9470 };    // 지도 좌표
-        const { Map } = await google.maps.importLibrary("maps");
-        const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
-
-        map = new Map(document.getElementById("mapGoogle"), {     // 구글 지도 생성
-            zoom: 15,
-            center: position,
-            mapId: "DEMO_MAP_ID",
-        });
-
-        new google.maps.Marker({    // 마커 생성
-            position: position,
-            map,
-            title: "Hello World!",
-        });
-    }
-
-    initMap();
-    
-</script>
+<script src="product_detail.js"></script>
 </html>

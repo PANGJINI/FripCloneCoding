@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 배너 */
+        section.bannerContainer {
+            display: inline-block;
+            position: relative;
+            margin: 0px 30px;
+            border-radius: 5px;
+            width: 375px;
+            height: 375px;
+            overflow: hidden;
+        }
+        div.mainBanner {
+            display: flex;
+            width: 1500px;
+            /* width: 1125px; */
+        }
+        /* 배너 사이즈에 맞도록 이미지 크기 조절 */
+        div.mainBanner img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* 배너 화살표 */
+        div.arrow {
+            position: absolute;
+            font-weight: bold;
+            font-size: 2.5rem;
+            color: aliceblue;
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        div.left {
+            left: 20px;
+        }
+        div.right {
+            right: 20px;
+        }
+        /* 배너 이미지 순서 표시 */
+        div.presentBannerPage {
+            position: absolute;
+            margin: 0 auto;
+            bottom: 10px;
+            background-color: rgb(83, 78, 78);
+            border-radius: 40px;
+            padding: 3px 10px;
+            opacity: 0.7;
+            left: 50%;
+            transform: translate(-50%, -10%);
+        }
+        div.presentBannerPage span {
+            color: aliceblue;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 슬라이드 배너 -->
+    <section class="bannerContainer">
+        <div class="mainBanner">
+            <div>
+                <img src="imgs/img01.png">
+            </div>
+            <div>
+                <img src="imgs/img02.png">
+            </div>
+        </div>
+        <div class="left arrow">&lt;</div>
+        <div class="right arrow">&gt;</div>
+        <div class="presentBannerPage">
+            <span></span>
+        </div>
+    </section>
+</body>
+<script>
+    // 배너 관련
+    const mainBanner = document.querySelector("div.mainBanner");
+    const firstBanner = document.createElement("div");
+    const lastBanner = document.createElement("div");
+    const arrows = document.querySelectorAll("div.arrow");
+    const bannerPageSpan = document.querySelector(".presentBannerPage span");
+    
+    let cnt = 0;    // 몇 번째 배너인지를 담을 변수
+    bannerPageSpan.textContent = `${cnt + 1} / 2`;  // 배너 이미지 순서 표시
+
+    // 배너
+    // 배너의 끝에 1번 이미지 추가하기
+    lastBanner.innerHTML = `<img src="imgs/img01.png">`;
+    mainBanner.appendChild(lastBanner);
+    // 배너의 맨 앞에 2번 이미지 추가하기
+    firstBanner.innerHTML = `<img src="imgs/img02.png">`;
+    mainBanner.insertBefore(firstBanner, document.querySelector("div.mainBanner div"));
+    //맨 처음에 출력되는 이미지를 1번 이미지로 하기 위함
+    mainBanner.style.transform = `translate(-375px)`;   
+
+
+
+
+    // 배너 화살표 클릭 이벤트
+    let arrowButtonCheck = true;
+
+    arrows.forEach((arrow) => {
+        arrow.addEventListener("click", (e) => {
+            if(arrowButtonCheck) {      //arrowButtonCheck가 false인 동안은 새로운 이벤트 발생x
+                let arrowType = e.target.classList[0];
+
+                if(arrowType==="left") {
+                    cnt--;  // 이전 이미지로 이동하므로 cnt를 감소시킴
+                    mainBanner.style.transition = `transform 0.5s`;
+                    mainBanner.style.transform = `translate(${-375 * (cnt + 1)}px)`;
+
+                    if(cnt === -1) {    //맨 처음 슬라이드일 때
+                        setTimeout(() => {
+                            mainBanner.style.transition = `transform 0s`;
+                            mainBanner.style.transform = `translate(-750px)`;   // 마지막 이미지로 이동
+                        }, 500)
+                        cnt = 1;
+                    }
+                } else {        // 다음 버튼
+                    cnt++;      // 다음 이미지로 넘어가기 때문에 cnt를 +해줌
+                    mainBanner.style.transition = `transform 0.5s`;     // 0.5초동안 애니메이션 적용
+                    mainBanner.style.transform = `translate(${-375 * (cnt + 1)}px)`;      // 이미지를 이동시킴
+                
+                    if(cnt === 2) {     //마지막 슬라이드일 때
+                        setTimeout(() => {
+                            mainBanner.style.transition = `transform 0s`;   // 애니메이션 없이 즉시 변환
+                            mainBanner.style.transform = `translate(-375px)`;  // 첫 번째 이미지로 이동
+                        }, 500)     // 0.5초 뒤에 실행
+                        cnt = 0;
+                    }
+                }
+
+                // 배너 이미지 순서 업데이트
+                bannerPageSpan.textContent = `${cnt + 1} / 2`;
+
+                // 1초 후에 재클릭 가능하도록 설정
+                setTimeout(() => {
+                    arrowButtonCheck = true;
+                }, 1000);
+            }
+        })
+    })
+</script>
+</html>
